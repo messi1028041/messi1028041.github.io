@@ -1,39 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-        header { background: #222; color: #fff; padding: 20px; display:flex; justify-content:space-between; align-items:center; }
-        header h1 { margin:0; }
-        nav a { color:#fff; text-decoration:none; margin-left:20px; }
-        nav a:hover { text-decoration:underline; }
-        .section { padding:60px 20px; max-width:900px; margin:auto; text-align:center; }
-        img.profile { width:220px; height:220px; border-radius:50%; object-fit:cover; margin-bottom:25px; }
-        footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:40px; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Your Name</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<header>
-    <h1>Your Name</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About Me</a>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="blob c"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">YN</div>
+      <div>
+        <h1>Your Name</h1>
+        <p class="muted">Designer • Developer • Problem solver</p>
+      </div>
+    </div>
+
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="resume.html" class="nav-link">Resume</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="about.html" class="nav-link" aria-current="page">About</a>
+      <a class="cta" href="#contact">Contact</a>
     </nav>
-</header>
+  </header>
 
-<div class="section">
-    <img src="your-photo.jpg" alt="Your Photo" class="profile">
-    <h2>About Me</h2>
-    <p>Write a short biography here. Talk about where you're from, what you're studying, what you're interested in, and what motivates you. Feel free to mention hobbies, career goals, or anything personal that helps people get to know you.</p>
-</div>
+  <main class="container">
+    <section class="content-card reveal">
+      <div class="content-grid">
+        <div>
+          <img class="profile large" src="your-photo.jpg" alt="Your Name — profile photo">
+        </div>
 
-<footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
-</footer>
+        <div>
+          <h2 class="headline">About me</h2>
+          <p class="muted">I’m a front-end engineer and designer who likes clean, fast user experiences. I study [your field], build accessible interfaces, and collaborate on projects that ship value quickly.</p>
+
+          <h3>Skills</h3>
+          <ul class="skills">
+            <li>HTML • CSS • JavaScript</li>
+            <li>React / Vue</li>
+            <li>Responsive & accessible UI</li>
+            <li>Design systems & prototyping</li>
+          </ul>
+
+          <h3>Education</h3>
+          <p class="muted">Your University — Degree (Year)</p>
+
+          <div style="margin-top:14px">
+            <a class="btn primary" href="resume.html">View full resume</a>
+            <a class="btn" href="projects.html">See projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-card reveal">
+      <h3>Want to work together?</h3>
+      <p class="muted">If you'd like to collaborate or hire me, send a message — I'm happy to chat.</p>
+      <a class="btn primary" href="mailto:you@example.com">Contact me</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="brand-small">
+        <div class="logo small">YN</div>
+        <div>
+          <div class="footer-name">Your Name</div>
+          <div class="muted small">© 2025 • All rights reserved</div>
+        </div>
+      </div>
+
+      <div class="socials">
+        <a href="#" aria-label="GitHub" class="social">GitHub</a>
+        <a href="#" aria-label="Twitter" class="social">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js" defer></script>
 </body>
 </html>
