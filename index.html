@@ -1,41 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-        header { background: #222; color: #fff; padding: 20px; display:flex; justify-content:space-between; align-items:center; }
-        header h1 { margin:0; }
-        nav a { color:#fff; text-decoration:none; margin-left:20px; }
-        nav a:hover { text-decoration:underline; }
-        .section { padding:60px 20px; max-width:900px; margin:auto; text-align:center; }
-        img.profile { width:200px; height:200px; border-radius:50%; object-fit:cover; margin-bottom:20px; }
-        footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:40px; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1: #071426;
+      --bg-2: #0b2a45;
+      --card: rgba(255,255,255,0.04);
+      --muted: #9fb4d1;
+      --accent-1: #3aa0ff;
+      --accent-2: #0057d9;
+      --glass-border: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.03);
+      --glass-strong: rgba(255,255,255,0.06);
+      --glass-hover: rgba(255,255,255,0.08);
+      --shadow: 0 10px 30px rgba(2,8,23,0.6);
+      --radius: 14px;
+      color-scheme: dark;
+    }
+
+    /* Reset / base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(46,86,163,0.12), transparent 8%),
+                  linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color:#e6eef9;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* Decorative animated blobs */
+    .bg-blobs{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+      mix-blend-mode:screen;
+    }
+    .blob{
+      position:absolute;
+      filter: blur(60px) saturate(120%);
+      opacity:0.18;
+      transform-origin:center;
+      animation:float 12s ease-in-out infinite;
+      border-radius:50%;
+    }
+    .blob.a{ width:380px; height:380px; background:linear-gradient(135deg,#062a5b,#1b6bd6); left:-10%; top:10%; animation-duration:18s;}
+    .blob.b{ width:260px; height:260px; background:linear-gradient(135deg,#02325d,#00a0ff); right:-5%; bottom:0; animation-duration:14s; animation-delay:2s;}
+    .blob.c{ width:180px; height:180px; background:linear-gradient(135deg,#064d6a,#3ab4ff); left:20%; bottom:10%; animation-duration:20s; animation-delay:4s;}
+    @keyframes float{
+      0%{ transform:translateY(0) scale(1) }
+      50%{ transform:translateY(-24px) scale(1.04) }
+      100%{ transform:translateY(0) scale(1) }
+    }
+
+    header{
+      position:relative;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 28px;
+      max-width:1200px;
+      margin:0 auto;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px) saturate(120%);
+      border-radius: var(--radius);
+      margin-top:18px;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:46px;height:46px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 6px 18px rgba(6,30,80,0.45);
+      font-weight:800;color:white;font-size:18px;
+    }
+    header h1{font-size:16px;margin:0;font-weight:700;letter-spacing:0.2px}
+    header p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:10px 14px;
+      border-radius:10px;
+      transition:all 220ms ease;
+      font-size:14px;
+    }
+    nav a:hover{
+      color:#fff;
+      transform:translateY(-3px);
+      background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      box-shadow: 0 6px 18px rgba(3,12,32,0.45);
+    }
+    .cta{
+      padding:10px 14px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:white;border:none;border-radius:10px;font-weight:700;
+      box-shadow: 0 6px 20px rgba(12,60,160,0.28);
+      cursor:pointer;
+      transition:transform 180ms ease, box-shadow 180ms ease;
+      text-decoration:none;
+    }
+    .cta:hover{ transform:translateY(-4px); box-shadow: 0 18px 40px rgba(2,48,150,0.32) }
+
+    /* Main layout */
+    main{ position:relative; z-index:2; max-width:1100px; margin:40px auto 80px; padding:0 20px; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:30px;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:32px;
+      border-radius:20px;
+      box-shadow: var(--shadow);
+      border:1px solid var(--glass-border);
+      backdrop-filter: blur(6px) saturate(120%);
+      overflow:visible;
+    }
+
+    .profile-wrap{
+      display:flex;flex-direction:column;align-items:center;gap:16px;
+      transform:translateZ(0);
+    }
+    .profile{
+      width:220px;height:220px;border-radius:20px;object-fit:cover;
+      border:6px solid transparent;
+      background:linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+      box-shadow: 0 10px 30px rgba(2,8,23,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+    /* rim gradient */
+    .profile::after{
+      content:"";
+      position:absolute;inset:0;margin:6px;border-radius:16px;
+      pointer-events:none;
+      background:linear-gradient(120deg, rgba(58,160,255,0.12), rgba(0,87,217,0.06));
+      mix-blend-mode:overlay;
+    }
+    .name{ font-size:22px;font-weight:800;margin:0 }
+    .role{ color:var(--muted); margin:0;font-size:13px }
+
+    .intro{
+      padding:10px 6px;
+      color:#d9eaff;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .actions{ display:flex; gap:12px; margin-top:8px; justify-content:center }
+    .btn{
+      padding:10px 16px;border-radius:10px;border:1px solid transparent; cursor:pointer;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      color:var(--muted); font-weight:700; transition:all 200ms ease;
+    }
+    .btn.primary{
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:white;
+      box-shadow: 0 10px 28px rgba(2,60,150,0.24);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .btn:hover{ transform:translateY(-4px) }
+    .btn.primary:hover{ box-shadow: 0 20px 48px rgba(2,60,150,0.36) }
+
+    /* Right column content */
+    .summary{
+      text-align:left;
+    }
+    .headline{ font-size:28px; margin:0 0 8px; font-weight:800; letter-spacing:-0.5px}
+    .subheadline{ color:var(--muted); margin:0 0 18px; font-size:15px }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:14px;
+      margin-top:8px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:12px;
+      padding:14px;
+      border:1px solid var(--glass-border);
+      transition:transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 320ms;
+      box-shadow: 0 8px 20px rgba(3,12,32,0.45);
+      cursor:default;
+    }
+    .card:hover{ transform:translateY(-8px) scale(1.01); box-shadow: 0 26px 48px rgba(2,8,40,0.6) }
+    .card h3{ margin:0 0 6px; font-size:15px }
+    .card p{ margin:0; color:var(--muted); font-size:13px; line-height:1.5 }
+
+    /* Projects preview */
+    .projects{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+    }
+    .project{
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      height:160px;
+      background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-border);
+      padding:14px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      transition:transform 300ms ease, box-shadow 300ms ease;
+    }
+    .project:hover{ transform:translateY(-8px) scale(1.02); box-shadow: 0 28px 48px rgba(1,14,48,0.6) }
+    .project .meta{ display:flex;gap:10px; align-items:center }
+    .dot{ width:10px;height:10px;border-radius:50%; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); box-shadow:0 6px 18px rgba(3,18,50,0.45) }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:40px;
+      padding:30px 12px;
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Entrance animations (reveal on scroll) */
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:all 700ms cubic-bezier(.2,.9,.3,1);
+      will-change:transform,opacity;
+    }
+    .reveal.visible{ opacity:1; transform:translateY(0) }
+
+    /* accessible focus */
+    a:focus, button:focus { outline:3px solid rgba(58,160,255,0.18); outline-offset:4px; border-radius:8px }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{ grid-template-columns: 1fr; text-align:center }
+      .summary{text-align:center}
+      header{ flex-direction:column; align-items:flex-start; gap:8px; padding:16px }
+      .brand{ align-items:center }
+      nav{ width:100%; justify-content:flex-end }
+      main{ margin:24px auto 60px }
+    }
+  </style>
 </head>
 <body>
-<header>
-    <h1>Your Name</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About Me</a>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="blob c"></div>
+  </div>
+
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">YN</div>
+      <div>
+        <h1>Your Name</h1>
+        <p>Designer • Developer • Problem solver</p>
+      </div>
+    </div>
+
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a class="cta" href="#contact">Contact</a>
     </nav>
-</header>
+  </header>
 
-<div class="section">
-    <img src="your-photo.jpg" alt="Your Photo" class="profile">
-    <h2>Welcome</h2>
-    <p>Write a short intro about who you are, what you're studying, your interests, etc.</p>
-</div>
+  <main>
+    <section class="hero reveal" id="hero">
+      <div class="profile-wrap">
+        <!-- Replace src with your image -->
+        <img class="profile" src="your-photo.jpg" alt="Your Name - profile photo" />
+        <div>
+          <p class="name">Your Name</p>
+          <p class="role">Student • Frontend Developer</p>
+        </div>
+        <div class="actions" aria-hidden="false">
+          <a class="btn primary" href="resume.html" role="button">Download Resume</a>
+          <a class="btn" href="projects.html" role="button">View Projects</a>
+        </div>
+      </div>
 
-<footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
-</footer>
+      <div class="summary">
+        <h2 class="headline">I build sleek interfaces and delightful experiences</h2>
+        <p class="subheadline">I craft performant, accessible, and beautiful web apps using modern tools. Below are a few highlights — explore my projects or get in touch.</p>
+
+        <div class="features">
+          <div class="card">
+            <h3>Fast UIs</h3>
+            <p>Optimized for performance and perceptual speed — animations and interactions feel instant.</p>
+          </div>
+          <div class="card">
+            <h3>Modern Tooling</h3>
+            <p>Comfortable with HTML, CSS, JS, and popular frameworks. Focused on maintainable systems.</p>
+          </div>
+          <div class="card">
+            <h3>Design-minded</h3>
+            <p>Pixel-aware and accessibility-first. I like tidy layouts and clear hierarchy.</p>
+          </div>
+        </div>
+
+        <div class="projects reveal" aria-live="polite" style="--delay:80ms;">
+          <div class="project" tabindex="0" aria-label="Project Alpha">
+            <div>
+              <div class="meta">
+                <div class="dot" aria-hidden="true"></div>
+                <strong>Project Alpha</strong>
+              </div>
+              <p style="color:var(--muted); margin-top:8px;">Interactive dashboard with realtime charts and custom visualizations.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <small style="color:var(--muted)">React • D3 • Netlify</small>
+              <a style="color:var(--accent-1); text-decoration:none; font-weight:700" href="projects.html">See details →</a>
+            </div>
+          </div>
+
+          <div class="project" tabindex="0" aria-label="Project Beta">
+            <div>
+              <div class="meta"><div class="dot" aria-hidden="true"></div><strong>Project Beta</strong></div>
+              <p style="color:var(--muted); margin-top:8px;">Minimal e-commerce theme with smooth animations and fast checkout flow.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <small style="color:var(--muted)">Vanilla JS • CSS • Firebase</small>
+              <a style="color:var(--accent-1); text-decoration:none; font-weight:700" href="projects.html">See details →</a>
+            </div>
+          </div>
+
+          <div class="project" tabindex="0" aria-label="Project Gamma">
+            <div>
+              <div class="meta"><div class="dot" aria-hidden="true"></div><strong>Project Gamma</strong></div>
+              <p style="color:var(--muted); margin-top:8px;">Accessible, responsive landing page with A/B testing and analytics.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <small style="color:var(--muted)">HTML • CSS • Google Analytics</small>
+              <a style="color:var(--accent-1); text-decoration:none; font-weight:700" href="projects.html">See details →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional contact quick section -->
+    <section id="contact" class="reveal" style="margin-top:28px; text-align:center; padding:26px; border-radius:12px; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);">
+      <h3 style="margin:0 0 8px">Let's build something great</h3>
+      <p style="color:var(--muted); margin:0 0 14px">Available for freelance and collaborative opportunities. Drop me a line and I'll get back shortly.</p>
+      <a class="btn primary" href="mailto:you@example.com" role="button">Say hello</a>
+    </section>
+  </main>
+
+  <footer>
+    <div style="max-width:1100px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="logo" style="width:36px;height:36px;border-radius:8px;font-size:13px">YN</div>
+        <div style="text-align:left">
+          <div style="font-weight:700">Your Name</div>
+          <div style="font-size:12px;color:var(--muted)">© 2025 • All rights reserved</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <!-- simple SVG icons -->
+        <a href="#" aria-label="GitHub" style="color:var(--muted);text-decoration:none;display:inline-flex;gap:8px;align-items:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 .5C5.648.5.5 5.648.5 12c0 5.083 3.293 9.387 7.867 10.905.575.104.785-.249.785-.554 0-.273-.01-1-.016-1.963-3.2.696-3.876-1.542-3.876-1.542-.523-1.328-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.762 1.187 1.762 1.187 1.026 1.758 2.692 1.251 3.347.957.104-.744.402-1.249.731-1.536-2.554-.291-5.238-1.277-5.238-5.683 0-1.255.449-2.282 1.185-3.086-.119-.292-.513-1.468.113-3.061 0 0 .967-.31 3.17 1.18.92-.256 1.906-.384 2.888-.389.982.005 1.968.133 2.89.389 2.2-1.49 3.165-1.18 3.165-1.18.628 1.593.235 2.77.116 3.061.739.804 1.183 1.831 1.183 3.086 0 4.417-2.69 5.388-5.254 5.672.413.354.78 1.053.78 2.122 0 1.531-.014 2.766-.014 3.143 0 .309.208.664.79.551C20.712 21.384 24 17.08 24 12c0-6.352-5.148-11.5-11.5-11.5z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter" style="color:var(--muted);text-decoration:none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.723 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.38 4.482A13.949 13.949 0 011.671 3.149a4.915 4.915 0 001.523 6.574 4.897 4.897 0 01-2.229-.616c-.054 2.28 1.581 4.415 3.949 4.89a4.936 4.936 0 01-2.224.084c.626 1.956 2.444 3.379 4.6 3.421A9.867 9.867 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-7.721 13.995-14.646A9.936 9.936 0 0023 4.557z" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple reveal-on-scroll using IntersectionObserver
+    (function(){
+      const reveals = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)) {
+        reveals.forEach(r=>r.classList.add('visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, {threshold: 0.12});
+      reveals.forEach(r=>io.observe(r));
+    })();
+
+    // small tilt effect for .project using pointer movement (accessible & lightweight)
+    (function(){
+      const projects = document.querySelectorAll('.project');
+      projects.forEach(p=>{
+        let rect;
+        p.addEventListener('pointermove', (ev)=>{
+          rect = rect || p.getBoundingClientRect();
+          const x = ev.clientX - rect.left;
+          const y = ev.clientY - rect.top;
+          const px = (x / rect.width - 0.5) * 18; // -9..9
+          const py = (y / rect.height - 0.5) * 10; // -5..5
+          p.style.transform = `translateY(-8px) scale(1.02) perspective(600px) rotateX(${ -py }deg) rotateY(${ px }deg)`;
+        });
+        p.addEventListener('pointerleave', ()=>{
+          p.style.transform = '';
+        });
+        // keyboard focus accessible hover
+        p.addEventListener('focus', ()=> p.style.transform = 'translateY(-8px) scale(1.02)');
+        p.addEventListener('blur', ()=> p.style.transform = '');
+      });
+    })();
+
+    // smooth scrolling for internal links
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+          const id = a.getAttribute('href');
+          if(id.length>1 && document.querySelector(id)){
+            e.preventDefault();
+            document.querySelector(id).scrollIntoView({behavior:'smooth', block:'center'});
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
+
 
 
