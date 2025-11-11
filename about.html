@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — David Thomas</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Page-specific small layout tweaks to keep the page compact and clean */
+    main.container { max-width: 900px; margin: 32px auto; padding: 0 16px; }
+    .content-grid { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
+    img.profile { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
+    .headline { margin: 0 0 6px 0; }
+    .muted { color: #6b7280; line-height: 1.5; }
+    .content-card { padding: 18px; border-radius: 10px; box-shadow: none; }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 6px 0 0 0; }
+    .skills li { background: #f3f4f6; padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; }
+    header.site-header { padding: 14px 16px; }
+    .bg-blobs { display: none; }
+    footer.site-footer { padding: 18px 16px; }
+  </style>
 </head>
 <body>
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob a"></div>
-    <div class="blob b"></div>
-    <div class="blob c"></div>
-  </div>
-
   <header class="site-header">
     <div class="brand">
       <div class="logo" aria-hidden="true">DT</div>
       <div>
-        <h1>David Thomas</h1>
-        <p class="muted">Computer Engineering Student • Programmer • Problem Solver</p>
+        <h1 style="margin:0;font-size:1.15rem;">David Thomas</h1>
+        <p class="muted" style="margin:4px 0 0 0;font-size:0.95rem;">Computer Engineering student • Cybersecurity, Hardware & Systems</p>
       </div>
     </div>
 
@@ -31,43 +39,44 @@
   </header>
 
   <main class="container">
-    <section class="content-card reveal">
-  <div class="content-grid">
-    <div>
-      <img class="profile large" src="headshot.jpg" alt="David Thomas — profile photo">
-    </div>
+    <section class="content-card">
+      <div class="content-grid">
+        <div>
+          <img class="profile" src="headshot.jpg" alt="David Thomas — profile photo">
+        </div>
+        <div>
+          <h2 class="headline">About</h2>
+          <p class="muted">I am a third-year Computer Engineering student at the Georgia Institute of Technology with focused interests in cybersecurity, computer hardware, and emerging architectures. I enjoy turning complex problems into clear, testable solutions and working collaboratively to build reliable systems.</p>
+        </div>
+      </div>
+    </section>
 
-    <div>
-      <h2 class="headline">About Me</h2>
-      <p class="muted">I am a third-year Computer Engineering student at the Georgia Institute of Technology with interests in Cyber Security, Computer Hardware, and Emerging Architectures.</p>
-    </div>
-  </div>
-</section>
+    <section class="content-card">
+      <h3 style="margin-bottom:6px;">Professional Experience</h3>
+      <p class="muted">Two IT internships: hands-on troubleshooting, system deployment and configuration, user support, and cross-team collaboration. Experience with scripting, system automation, and basic network/security practices.</p>
+    </section>
 
-<section class="content-card reveal">
-  <h3>Professional Experience</h3>
-  <p class="muted">Two IT internships where I gained hands-on troubleshooting experience, deployed and configured systems, supported users, and collaborated within team environments. Developed strong problem-solving abilities and familiarity with professional tooling.</p>
-</section>
+    <section class="content-card">
+      <h3 style="margin-bottom:6px;">Skills</h3>
+      <ul class="skills">
+        <li>Python</li>
+        <li>Java / C / C++</li>
+        <li>JavaScript • HTML • CSS</li>
+        <li>Digital Logic • VHDL • FPGA</li>
+        <li>Git • Docker • VS Code</li>
+        <li>Troubleshooting • Teamwork</li>
+      </ul>
+    </section>
 
-<section class="content-card reveal">
-  <h3>Skills</h3>
-  <ul class="skills">
-    <li>Python • Java • C • C# • C++ • JavaScript • HTML • CSS</li>
-    <li>Digital Logic • VHDL • FPGA Development</li>
-    <li>Microsoft Word • Excel • GitHub • Docker • Visual Studio Code • NinjaOne • Active Directory</li>
-    <li>Team Collaboration • Troubleshooting • Circuit Breadboarding</li>
-  </ul>
-</section>
+    <section class="content-card">
+      <h3 style="margin-bottom:6px;">Education</h3>
+      <p class="muted">Georgia Institute of Technology — B.S. Computer Engineering (Expected May 2027)</p>
+    </section>
 
-<section class="content-card reveal">
-  <h3>Education</h3>
-  <p class="muted">Georgia Institute of Technology — Computer Engineering<br>Expected Graduation: May 2027</p>
-</section>
-
-<section class="content-card reveal">
-  <h3>Hobbies & Interests</h3>
-  <p class="muted">I enjoy hunting, fishing, going to the gym, and spending time outdoors.</p>
-</section>
+    <section class="content-card">
+      <h3 style="margin-bottom:6px;">Hobbies & Interests</h3>
+      <p class="muted">Hunting, fishing, fitness, and spending time outdoors.</p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -85,9 +94,3 @@
   <script src="assets/scripts.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
