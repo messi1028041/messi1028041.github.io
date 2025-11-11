@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Resume — Your Name</title>
+  <title>Resume — David Thomas</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Minimal page-specific styles for embedded PDF */
+    .pdf-wrap { margin-top:18px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); }
+    .pdf-wrap iframe { width:100%; height:720px; border:0; display:block; }
+    @media (max-width:900px) {
+      .pdf-wrap iframe { height:520px; }
+    }
+    .resume-actions { margin-top:14px; display:flex; gap:12px; justify-content:center; }
+  </style>
 </head>
 <body>
   <div class="bg-blobs" aria-hidden="true">
@@ -17,8 +26,8 @@
     <div class="brand">
       <div class="logo" aria-hidden="true">YN</div>
       <div>
-        <h1>Your Name</h1>
-        <p class="muted">Designer • Developer • Problem solver</p>
+        <h1>David Thomas</h1>
+        <p class="muted">Engineer • Programmer • Problem solver</p>
       </div>
     </div>
 
@@ -27,44 +36,26 @@
       <a href="resume.html" class="nav-link" aria-current="page">Resume</a>
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="about.html" class="nav-link">About</a>
-      <a class="cta" href="#contact">Contact</a>
+      <a class="cta" href="about.html#contact">Contact</a>
     </nav>
   </header>
 
   <main class="container">
     <section class="content-card reveal">
-      <div class="resume-grid">
-        <div>
-          <h2 class="headline">Experience</h2>
+      <h2 class="headline">Resume</h2>
+      <p class="muted">You can preview the resume below. Click "Download PDF" to save a copy.</p>
 
-          <div class="timeline-item">
-            <div class="timeline-title">Frontend Developer — Acme Co</div>
-            <div class="muted">2023 — Present</div>
-            <p class="muted">Built and maintained interactive dashboards and internal tools. Improved load times by 35% and reduced bundle size.</p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-title">Intern — Another Co</div>
-            <div class="muted">2022 — 2023</div>
-            <p class="muted">Contributed to front-end features, QA, and accessibility improvements.</p>
-          </div>
-        </div>
-
-        <aside>
-          <h3>Contact</h3>
-          <p class="muted">you@example.com</p>
-
-          <h3>Education</h3>
-          <p class="muted">Your University — Degree (Year)</p>
-
-          <h3>Tools</h3>
-          <p class="muted">Git • Node • React • D3 • Figma</p>
-        </aside>
+      <!-- Embedded PDF: place your PDF at assets/YourName_Resume.pdf -->
+      <div class="pdf-wrap">
+        <iframe src="assets/YourName_Resume.pdf" title="David Thomas — Resume (PDF)"></iframe>
       </div>
 
-      <div style="margin-top:18px">
-        <a class="btn" href="assets/YourName_Resume.pdf" target="_blank" rel="noopener">Open PDF</a>
-        <a class="btn primary" href="mailto:you@example.com">Contact</a>
+      <div class="resume-actions">
+        <!-- download attribute causes direct download in most browsers; keep file in assets folder -->
+        <a class="btn primary" href="assets/YourName_Resume.pdf" download="David_Thomas_Resume.pdf">Download PDF</a>
+
+        <!-- fallback / open in new tab -->
+        <a class="btn" href="assets/YourName_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
       </div>
     </section>
   </main>
@@ -74,7 +65,7 @@
       <div class="brand-small">
         <div class="logo small">YN</div>
         <div>
-          <div class="footer-name">Your Name</div>
+          <div class="footer-name">David Thomas</div>
           <div class="muted small">© 2025 • All rights reserved</div>
         </div>
       </div>
@@ -89,4 +80,5 @@
   <script src="assets/scripts.js" defer></script>
 </body>
 </html>
+
 
