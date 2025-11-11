@@ -5,107 +5,75 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — David Thomas</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    main.container{max-width:940px;margin:28px auto;padding:0 16px;}
+    .project-card{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:start;padding:16px;border-radius:10px;margin-bottom:14px;background:#fff;border:1px solid rgba(15,23,42,0.04);}
+    .project-card img{width:180px;height:120px;object-fit:cover;border-radius:8px;}
+    .learn-box{background:#f8fafc;border-left:4px solid #e2e8f0;padding:10px;border-radius:6px;margin-top:10px;color:#374151;}
+    @media(max-width:700px){ .project-card{grid-template-columns:1fr} .project-card img{width:100%;height:200px} }
+  </style>
 </head>
 <body>
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob a"></div>
-    <div class="blob b"></div>
-    <div class="blob c"></div>
-  </div>
-
   <header class="site-header">
     <div class="brand">
-      <div class="logo" aria-hidden="true">YN</div>
+      <div class="logo" aria-hidden="true">DT</div>
       <div>
-        <h1>David Thomas</h1>
-        <p class="muted">Engineer • Programmer • Problem solver</p>
+        <h1 style="margin:0;font-size:1.15rem;">David Thomas</h1>
+        <p class="muted" style="margin:4px 0 0 0;font-size:0.95rem;">Computer Engineering student • Cybersecurity, Hardware & Systems</p>
       </div>
     </div>
 
     <nav class="primary-nav" aria-label="Main navigation">
       <a href="index.html" class="nav-link">Home</a>
       <a href="resume.html" class="nav-link">Resume</a>
-      <a href="projects.html" class="nav-link" aria-current="page">Projects</a>
+      <a href="project.html" class="nav-link" aria-current="page">Projects</a>
       <a href="about.html" class="nav-link">About</a>
-      <a class="cta" href="about.html#contact">Contact</a>
     </nav>
   </header>
 
   <main class="container">
-    <section class="content-card reveal">
-      <h2 class="headline">Projects</h2>
-      <p class="muted">Two selected projects. Click a project to expand details and edit description, skills, and lessons learned.</p>
+    <h2 style="margin-bottom:12px;">Projects</h2>
 
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card" id="project-alpha">
-          <img class="project-thumb" src="assets/project1.jpg" alt="Project Alpha screenshot">
-          <div class="project-content">
-            <h3>Project Alpha</h3>
-            <p class="muted short">Short tagline or one-line summary of Project Alpha.</p>
-
-            <h4>Description</h4>
-            <p class="muted">Add a longer description of the project here. What is it? Who is it for? Which problems does it solve?</p>
-
-            <h4>Skills used</h4>
-            <ul class="muted">
-              <li>React</li>
-              <li>D3</li>
-              <li>Netlify</li>
-            </ul>
-
-            <h4>What I learned</h4>
-            <p class="muted">Notes about lessons learned, challenges overcome, performance improvements, accessibility wins, etc.</p>
-
-            <!-- Optional: link to live demo or repo -->
-            <div style="margin-top:10px">
-              <a class="btn" href="#" target="_blank" rel="noopener">View repo / demo</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card" id="project-beta">
-          <img class="project-thumb" src="assets/project2.jpg" alt="Project Beta screenshot">
-          <div class="project-content">
-            <h3>Project Beta</h3>
-            <p class="muted short">Short tagline or one-line summary of Project Beta.</p>
-
-            <h4>Description</h4>
-            <p class="muted">Add a longer description of the project here. What did you build? What features stand out?</p>
-
-            <h4>Skills used</h4>
-            <ul class="muted">
-              <li>Vanilla JavaScript</li>
-              <li>CSS animations</li>
-              <li>Firebase</li>
-            </ul>
-
-            <h4>What I learned</h4>
-            <p class="muted">Notes about lessons learned, testing approach, responsive techniques, etc.</p>
-
-            <div style="margin-top:10px">
-              <a class="btn" href="#" target="_blank" rel="noopener">View repo / demo</a>
-            </div>
-          </div>
-        </article>
+    <article class="project-card">
+      <img src="assets/project1.svg" alt="Project 1 — screenshot or photo">
+      <div>
+        <h3 style="margin:0 0 6px 0;">Project One — Title</h3>
+        <p class="muted">Short description: what the project does and why it exists. Keep this to 1–2 sentences so it is scannable.</p>
+        <div class="learn-box">
+          <strong>What I learned:</strong>
+          <ul style="margin:6px 0 0 18px;">
+            <li>Example: Improved skills in Python scripting and automation.</li>
+            <li>Example: Basics of deployment and debugging on embedded hardware.</li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </article>
+
+    <article class="project-card">
+      <img src="assets/project2.svg" alt="Project 2 — screenshot or photo">
+      <div>
+        <h3 style="margin:0 0 6px 0;">Project Two — Title</h3>
+        <p class="muted">Short description: what the project does and why it exists. One concise paragraph that explains the core idea.</p>
+        <div class="learn-box">
+          <strong>What I learned:</strong>
+          <ul style="margin:6px 0 0 18px;">
+            <li>Example: Gained experience integrating APIs and front-end interfaces.</li>
+            <li>Example: Practiced version control and collaborative workflows.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="brand-small">
-        <div class="logo small">YN</div>
+        <div class="logo small">DT</div>
         <div>
           <div class="footer-name">David Thomas</div>
-          <div class="muted small">© 2025 • All rights reserved</div>
+          <div class="muted small">© 2025 • All Rights Reserved</div>
         </div>
-      </div>
-
-      <div class="socials">
-        <a href="#" aria-label="GitHub" class="social">GitHub</a>
-        <a href="#" aria-label="Twitter" class="social">Twitter</a>
       </div>
     </div>
   </footer>
@@ -113,7 +81,3 @@
   <script src="assets/scripts.js" defer></script>
 </body>
 </html>
-
-
-
-
