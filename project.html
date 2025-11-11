@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — Your Name</title>
+  <title>Projects — David Thomas</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -17,8 +17,8 @@
     <div class="brand">
       <div class="logo" aria-hidden="true">YN</div>
       <div>
-        <h1>Your Name</h1>
-        <p class="muted">Designer • Developer • Problem solver</p>
+        <h1>David Thomas</h1>
+        <p class="muted">Engineer • Programmer • Problem solver</p>
       </div>
     </div>
 
@@ -27,55 +27,69 @@
       <a href="resume.html" class="nav-link">Resume</a>
       <a href="projects.html" class="nav-link" aria-current="page">Projects</a>
       <a href="about.html" class="nav-link">About</a>
-      <a class="cta" href="#contact">Contact</a>
+      <a class="cta" href="about.html#contact">Contact</a>
     </nav>
   </header>
 
   <main class="container">
     <section class="content-card reveal">
-      <h2 class="headline">Selected Projects</h2>
-      <p class="muted">A few projects that showcase my work — click to view demos or source.</p>
+      <h2 class="headline">Projects</h2>
+      <p class="muted">Two selected projects. Click a project to expand details and edit description, skills, and lessons learned.</p>
 
-      <div class="projects-grid" style="margin-top:18px">
-        <article class="project large" tabindex="0" aria-label="Project Alpha full">
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card" id="project-alpha">
+          <img class="project-thumb" src="assets/project1.jpg" alt="Project Alpha screenshot">
           <div class="project-content">
             <h3>Project Alpha</h3>
-            <p class="muted">Interactive dashboard with realtime charts and custom visualizations.</p>
-          </div>
-          <div class="project-actions">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn primary" href="#">Source</a>
+            <p class="muted short">Short tagline or one-line summary of Project Alpha.</p>
+
+            <h4>Description</h4>
+            <p class="muted">Add a longer description of the project here. What is it? Who is it for? Which problems does it solve?</p>
+
+            <h4>Skills used</h4>
+            <ul class="muted">
+              <li>React</li>
+              <li>D3</li>
+              <li>Netlify</li>
+            </ul>
+
+            <h4>What I learned</h4>
+            <p class="muted">Notes about lessons learned, challenges overcome, performance improvements, accessibility wins, etc.</p>
+
+            <!-- Optional: link to live demo or repo -->
+            <div style="margin-top:10px">
+              <a class="btn" href="#" target="_blank" rel="noopener">View repo / demo</a>
+            </div>
           </div>
         </article>
 
-        <article class="project large" tabindex="0" aria-label="Project Beta full">
+        <!-- Project 2 -->
+        <article class="project-card" id="project-beta">
+          <img class="project-thumb" src="assets/project2.jpg" alt="Project Beta screenshot">
           <div class="project-content">
             <h3>Project Beta</h3>
-            <p class="muted">Minimal e-commerce theme with smooth animations and fast checkout flow.</p>
-          </div>
-          <div class="project-actions">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn primary" href="#">Source</a>
-          </div>
-        </article>
+            <p class="muted short">Short tagline or one-line summary of Project Beta.</p>
 
-        <article class="project large" tabindex="0" aria-label="Project Gamma full">
-          <div class="project-content">
-            <h3>Project Gamma</h3>
-            <p class="muted">Accessible, responsive landing page instrumented with analytics.</p>
-          </div>
-          <div class="project-actions">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn primary" href="#">Source</a>
+            <h4>Description</h4>
+            <p class="muted">Add a longer description of the project here. What did you build? What features stand out?</p>
+
+            <h4>Skills used</h4>
+            <ul class="muted">
+              <li>Vanilla JavaScript</li>
+              <li>CSS animations</li>
+              <li>Firebase</li>
+            </ul>
+
+            <h4>What I learned</h4>
+            <p class="muted">Notes about lessons learned, testing approach, responsive techniques, etc.</p>
+
+            <div style="margin-top:10px">
+              <a class="btn" href="#" target="_blank" rel="noopener">View repo / demo</a>
+            </div>
           </div>
         </article>
       </div>
-    </section>
-
-    <section id="contact" class="contact-card reveal">
-      <h3>Interested in a collaboration?</h3>
-      <p class="muted">I’m available for freelance and long-term work — get in touch.</p>
-      <a class="btn primary" href="mailto:you@example.com">Reach out</a>
     </section>
   </main>
 
@@ -84,7 +98,7 @@
       <div class="brand-small">
         <div class="logo small">YN</div>
         <div>
-          <div class="footer-name">Your Name</div>
+          <div class="footer-name">David Thomas</div>
           <div class="muted small">© 2025 • All rights reserved</div>
         </div>
       </div>
@@ -99,5 +113,6 @@
   <script src="assets/scripts.js" defer></script>
 </body>
 </html>
+
 
 
