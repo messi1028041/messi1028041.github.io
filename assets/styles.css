@@ -39,30 +39,30 @@ body{
   border-bottom: 1px solid rgba(255,255,255,0.03); backdrop-filter: blur(6px) saturate(120%); border-radius:var(--radius);
 }
 .brand{ display:flex; gap:14px; align-items:center }
-.logo{ width:46px; height:46px; border-radius:10px; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:white; font-size:18px }
+.logo{ width:46px; height:46px; border-radius:10px; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff }
 .site-header h1{ font-size:16px; margin:0 }
 .muted{ color:var(--muted) }
 
 .primary-nav{ display:flex; gap:12px; align-items:center }
 .primary-nav .nav-link{ color:var(--muted); text-decoration:none; padding:10px 14px; border-radius:10px; transition:all 220ms ease; font-weight:600; font-size:14px }
 .primary-nav .nav-link:hover{ color:#fff; transform:translateY(-3px); background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); box-shadow: 0 6px 18px rgba(3,12,32,0.45) }
-.cta{ padding:10px 14px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:white; border:none; border-radius:10px; font-weight:700; box-shadow: 0 6px 20px rgba(12,60,160,0.28); text-decoration:none }
+.cta{ padding:10px 14px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:white; border:none; border-radius:10px; font-weight:700; box-shadow: 0 6px 20px rgba(12,60,160,0.2) }
 
 .container{ position:relative; z-index:2; max-width:1100px; margin:40px auto 80px; padding:0 20px }
 
 /* hero */
-.hero{ display:grid; grid-template-columns: 280px 1fr; gap:30px; align-items:center; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:32px; border-radius:20px; box-shadow: var(--shadow); border:1px solid var(--glass-border); backdrop-filter: blur(6px) saturate(120%); overflow:visible }
+.hero{ display:grid; grid-template-columns: 280px 1fr; gap:30px; align-items:center; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:32px; border-radius:12px; border:1px solid var(--glass-border) }
 .profile-wrap{ display:flex; flex-direction:column; align-items:center; gap:16px; transform:translateZ(0) }
-.profile{ width:220px; height:220px; border-radius:20px; object-fit:cover; border:6px solid transparent; background:linear-gradient(135deg, rgba(255,255,255,0.02), transparent); box-shadow: 0 10px 30px rgba(2,8,23,0.6); position:relative; overflow:hidden }
+.profile{ width:220px; height:220px; border-radius:20px; object-fit:cover; border:6px solid transparent; background:linear-gradient(135deg, rgba(255,255,255,0.02), transparent); box-shadow: 0 10px 30px rgba(2,8,23,0.4) }
 .profile.large{ width:300px; height:300px; border-radius:18px }
-.profile::after{ content:""; position:absolute; inset:0; margin:6px; border-radius:16px; pointer-events:none; background:linear-gradient(120deg, rgba(58,160,255,0.12), rgba(0,87,217,0.06)); mix-blend-mode:overlay }
+.profile::after{ content:""; position:absolute; inset:0; margin:6px; border-radius:16px; pointer-events:none; background:linear-gradient(120deg, rgba(58,160,255,0.12), rgba(0,87,217,0.06)); mix-blend-mode:screen }
 
 .name{ font-size:22px; font-weight:800; margin:0 }
 .role{ color:var(--muted); margin:0; font-size:13px }
 
 .intro{ padding:10px 6px; color:#d9eaff; line-height:1.6; font-size:15px }
 .actions{ display:flex; gap:12px; margin-top:8px; justify-content:center }
-.btn{ padding:10px 16px; border-radius:10px; border:1px solid transparent; cursor:pointer; background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent); color:var(--muted); font-weight:700; transition:all 200ms ease; text-decoration:none }
+.btn{ padding:10px 16px; border-radius:10px; border:1px solid transparent; cursor:pointer; background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent); color:var(--muted); font-weight:700 }
 .btn.primary{ background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:white; box-shadow: 0 10px 28px rgba(2,60,150,0.24); border: 1px solid rgba(255,255,255,0.06) }
 .btn:hover{ transform:translateY(-4px) }
 .btn.primary:hover{ box-shadow: 0 20px 48px rgba(2,60,150,0.36) }
@@ -74,19 +74,80 @@ body{
 
 /* cards */
 .features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:8px }
-.card{ background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border-radius:12px; padding:14px; border:1px solid var(--glass-border); transition:transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 320ms; box-shadow: 0 8px 20px rgba(3,12,32,0.45) }
+.card{ background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border-radius:12px; padding:14px; border:1px solid var(--glass-border); transition:transform 320ms cubic-bezier(.2,.9,.3,1); }
 .card:hover{ transform:translateY(-8px) scale(1.01); box-shadow: 0 26px 48px rgba(2,8,40,0.6) }
 .card h3{ margin:0 0 6px; font-size:15px }
 .card p{ margin:0; color:var(--muted); font-size:13px; line-height:1.5 }
 
-/* project previews */
+/* -------------------------------------------------------------
+   Project preview and project-card styles (fixed for wrapping,
+   full-card clickable preview, and image sizing)
+   ------------------------------------------------------------- */
+
+/* Projects preview grid */
 .projects-preview, .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top:16px }
-.project{ position:relative; overflow:hidden; border-radius:12px; height:160px; background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--glass-border); padding:14px; display:flex; flex-direction:column; justify-content:space-between; transition:transform 300ms ease, box-shadow 300ms ease }
-.project.large{ height:auto; padding:20px; min-height:140px }
-.project:hover{ transform:translateY(-8px) scale(1.02); box-shadow: 0 28px 48px rgba(1,14,48,0.6) }
-.meta{ display:flex; gap:10px; align-items:center }
-.dot{ width:10px; height:10px; border-radius:50%; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); box-shadow:0 6px 18px rgba(3,18,50,0.45) }
-.project-footer, .project-actions{ display:flex; justify-content:space-between; align-items:center }
+
+/* Make the preview itself an anchor or a block — supports anchor.project */
+.project {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px;
+  border-radius:12px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid var(--glass-border);
+  text-decoration:none;
+  color:inherit;
+  min-height:auto;
+  overflow:visible; /* important so text isn't clipped */
+  transition:transform 240ms ease, box-shadow 240ms ease;
+}
+.project:hover, .project:focus { transform:translateY(-6px); box-shadow: 0 22px 40px rgba(1,14,48,0.5); outline: none; }
+
+/* small meta & dot */
+.meta{ display:flex; gap:10px; align-items:center; margin-bottom:6px; }
+.dot{ width:12px; height:12px; border-radius:50%; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); box-shadow:0 6px 18px rgba(3,18,50,0.45); flex:0 0 12px; }
+
+/* ensure descriptions wrap and are not cut off */
+.project .short, .project p {
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+
+/* project-card (detailed project page) */
+.project-card {
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:16px;
+  align-items:start;
+  padding:16px;
+  border-radius:10px;
+  margin-bottom:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border:1px solid var(--glass-border);
+}
+
+/* project-card image sizing — fixed logical size on desktop, responsive on mobile */
+.project-card .project-image {
+  width:180px;
+  height:120px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  max-width:100%;
+  aspect-ratio:3/2;
+  flex-shrink:0;
+  max-height:120px;
+}
+
+/* learn box on project page */
+.learn-box { background: rgba(255,255,255,0.02); border-left:4px solid rgba(255,255,255,0.02); padding:10px; border-radius:6px; margin-top:10px; color:var(--muted); }
 
 /* resume & layout */
 .content-card, .contact-card{ margin-top:28px; text-align:center; padding:26px; border-radius:12px; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent) }
@@ -98,7 +159,7 @@ body{
 /* footer */
 .site-footer{ text-align:center; color:var(--muted); margin-top:40px; padding:30px 12px; border-top:1px solid rgba(255,255,255,0.02) }
 .footer-inner{ max-width:1100px; margin:0 auto; padding:6px 20px; display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap }
-.logo.small{ width:36px; height:36px; border-radius:8px; font-size:13px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); color:white }
+.logo.small{ width:36px; height:36px; border-radius:8px; font-size:13px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)) }
 
 /* utilities & accessibility */
 .reveal{ opacity:0; transform:translateY(20px); transition:all 700ms cubic-bezier(.2,.9,.3,1); will-change:transform,opacity }
@@ -113,4 +174,18 @@ body{
   .site-header{ flex-direction:column; align-items:flex-start; gap:8px; padding:16px }
   .primary-nav{ width:100%; justify-content:flex-end }
   .container{ margin:24px auto 60px }
+}
+
+/* small screens: stack project cards and let images be full-width */
+@media (max-width:700px){
+  .about .content-grid, .hobby-grid, .project-page .project-card { grid-template-columns: 1fr; }
+  .about .profile, .hobby-img { margin:0 auto; }
+  .skills-blob { flex-direction:column; }
+  .project-page .project-card img, .project-card .project-image { width:100%; height:auto; max-height:none; aspect-ratio:auto; }
+}
+
+/* smaller screen fallback for projects-preview */
+@media (max-width:540px){
+  .projects-preview { grid-template-columns: 1fr; }
+  .project { padding:12px; }
 }
