@@ -198,8 +198,8 @@ body{
 }
 
 .about-img-box {
-  width: 180px;               /* matches project box width */
-  height: 120px;              /* matches project box height */
+  width: 220px;               /* matches project box width */
+  height: 160px;              /* matches project box height */
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
   border: 1px solid rgba(255,255,255,0.04);
   border-radius: 10px;
