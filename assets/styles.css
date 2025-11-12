@@ -325,3 +325,60 @@ body{
   object-fit: contain; /* ensures whole image is visible */
   border-radius: 50%;
 }
+/* >>> OVERRIDE: ensure hobby image shows full photo (no cropping) and sits in a contained block */
+
+/* Desktop left-block that does not fill the page */
+.about .content-card .hobby-grid .about-img-box {
+  width: 360px !important;          /* adjust width if you want larger/smaller */
+  height: 240px !important;         /* 3:2 block height */
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: 8px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12) !important;
+  margin-right: 18px !important;
+}
+
+/* Show the whole image (no crop) inside the block */
+.about .content-card .hobby-grid .about-img-box .hobby-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;   /* show full image without cropping */
+  object-position: center !important;
+  display: block !important;
+  border-radius: 8px !important;
+  background-color: rgba(0,0,0,0.03) !important; /* subtle letterbox background */
+}
+
+/* Layout: image left, text right */
+.about .content-card .hobby-grid {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+
+/* Mobile: stack image above text and keep aspect ratio */
+@media (max-width:700px) {
+  .about .content-card .hobby-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .about .content-card .hobby-grid .about-img-box {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3 / 2 !important;
+    margin: 0 auto 6px !important;
+    padding: 6px !important;
+  }
+  .about .content-card .hobby-grid .about-img-box .hobby-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
