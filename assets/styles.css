@@ -197,30 +197,34 @@ body{
   align-items: center;
 }
 
+/* Make hobby image bubble larger so image isn't cut off */
 .about-img-box {
-  width: 220px;               /* matches project box width */
-  height: 160px;              /* matches project box height */
+  width: 240px;               /* increased from 180 -> 240 */
+  height: 160px;              /* increased from 120 -> 160 */
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
   border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 10px;
+  border-radius: 12px;        /* slightly larger radius to match bigger box */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 6px;
-  box-shadow: 0 6px 18px rgba(1,10,30,0.12);
+  padding: 8px;               /* slightly larger padding */
+  box-shadow: 0 8px 22px rgba(1,10,30,0.12);
   flex-shrink: 0;
+  margin-right: 14px;
 }
 
+/* ensure the image fits the box without stretching */
 .about-img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;          /* fills box while preserving aspect; still crops if very different ratio */
+  object-position: center;    /* center the crop */
   display: block;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-/* small screens: stack image above text and make image full-width */
+/* mobile: stack and let the box be full-width while keeping 3:2 ratio */
 @media (max-width:700px) {
   .hobby-grid {
     grid-template-columns: 1fr;
@@ -231,6 +235,7 @@ body{
     height: auto;
     aspect-ratio: 3/2;
     margin: 0 auto;
+    padding: 6px;
   }
   .about-img-box img {
     width: 100%;
