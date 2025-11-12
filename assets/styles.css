@@ -242,3 +242,65 @@ body{
     height: 100%;
   }
 }
+/* Merge these additions/changes into assets/styles.css (near the project img-box and project-card rules).
+   This makes the hobby image a larger boxed "bubble", positioned left of the text on desktop and stacked on mobile. */
+
+/* Ensure about cards use left-aligned text */
+.about .content-card { text-align: left; }
+
+/* Hobby grid: image left, text right on larger screens; stacks on small screens */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: auto 1fr; /* image box + flexible text column */
+  gap: 16px;
+  align-items: center;
+}
+
+/* Larger 'bubble' so hobby photo isn't cut off */
+.about-img-box {
+  width: 260px;               /* increased a bit more to avoid cropping */
+  height: 173px;             /* 3:2 ratio (260x173) */
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8px;
+  box-shadow: 0 8px 26px rgba(1,10,30,0.12);
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+/* ensure the image fits the box without stretching and center the crop */
+.about-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 8px;
+}
+
+/* allow text to wrap properly inside grid column */
+.hobby-text { min-width: 0; }
+
+/* Mobile: stack image above text, make image full-width while keeping 3:2 ratio */
+@media (max-width:700px) {
+  .hobby-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .about-img-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    margin: 0 auto;
+    padding: 6px;
+  }
+  .about-img-box img {
+    width: 100%;
+    height: 100%;
+  }
+}
