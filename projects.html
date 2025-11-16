@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/styles.css">
   <style>
     /* --- Demo Video and Code Styles --- */
-    .video-section {
+    .video-section, .wiring-section {
       margin: 1.5em 0;
       background: rgba(255,255,255,0.03);
       padding: 16px;
@@ -15,6 +15,22 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+    }
+    .wiring-section img {
+      display: block;
+      width: 96vw;
+      max-width: 1000px;
+      height: auto;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 32px rgba(10,30,60,0.20);
+      background: #151d29;
+    }
+    .wiring-section p {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 8px;
     }
     .code-section {
       margin: 1.5em 0;
@@ -85,8 +101,6 @@
             <li>Strengthened skills in designing user-friendly interfaces and responsive layouts.</li>
           </ul>
         </div>
-
-
       </div>
     </article>
 
@@ -107,15 +121,21 @@
         </div>
 
         <section class="video-section">
-  <h4>Demo Video</h4>
-  <iframe width="420" height="236"
-    src="https://www.youtube.com/embed/ODEoK52VvYA"
-    title="RFID Scanner Demo Video"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</section>
+          <h4>Demo Video</h4>
+          <iframe width="420" height="236"
+            src="https://www.youtube.com/embed/ODEoK52VvYA"
+            title="RFID Scanner Demo Video"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </section>
+
+        <section class="wiring-section">
+          <h4>Wiring Diagram</h4>
+          <img src="circuit.png" alt="Wiring diagram for RFID Scanner project">
+          <p>(This is the wiring diagram used to make the RFID scanner I designed.)</p>
+        </section>
 
         <section class="code-section">
           <h4>RFID Scanner Code</h4>
@@ -183,7 +203,6 @@ void loop() {
 }
   
 // Extract Card UID and convert to readable hex string
-  
 String getCardID() {
   String ID = "";
   for (byte i = 0; i < rfid.uid.size; i++) {
