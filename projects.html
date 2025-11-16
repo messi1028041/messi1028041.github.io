@@ -107,18 +107,18 @@
         </div>
 
         <section class="video-section">
-          <h4>Demo Video</h4>
-          <iframe width="420" height="236" src="https://www.youtube.com/watch?v=ODEoK52VvYA" title="RFID Scanner Demo Video" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-          <!-- Or for MP4: 
-          <video width="420" controls>
-            <source src="demo-rfid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          -->
-        </section>
+  <h4>Demo Video</h4>
+  <iframe width="420" height="236"
+    src="https://www.youtube.com/embed/ODEoK52VvYA"
+    title="RFID Scanner Demo Video"
+    frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</section>
 
         <section class="code-section">
-          <h4>Project Code</h4>
+          <h4>RFID Scanner Code</h4>
           <div class="code-block" id="code-rfid">
             <button class="copy-btn" onclick="copyCode('code-rfid', this)">Copy</button>
 <code>
@@ -143,6 +143,7 @@ void setup() {
   lcd.backlight();
   lcd.clear();
 }
+  
 void loop() {
   lcd.setCursor(4, 0);
   lcd.print("Welcome!");
@@ -156,6 +157,7 @@ void loop() {
   Serial.print("Scanned UID: ");
   Serial.println(scannedID);
   lcd.clear();
+  
   if (scannedID == USER1_UID) {
     lcd.setCursor(0,0);
     lcd.print("Door Open");
@@ -163,6 +165,7 @@ void loop() {
     lcd.print("Welcome " + USER1_NAME);
     delay(2500);
   } 
+  
   else if (scannedID == USER2_UID) {
     lcd.setCursor(0,0);
     lcd.print("Door Open");
@@ -170,6 +173,7 @@ void loop() {
     lcd.print("Welcome " + USER2_NAME);
     delay(2500);
   } 
+  
   else {
     lcd.setCursor(0,0);
     lcd.print("Access Denied!");
@@ -177,7 +181,9 @@ void loop() {
   }
   lcd.clear();
 }
+  
 // Extract Card UID and convert to readable hex string
+  
 String getCardID() {
   String ID = "";
   for (byte i = 0; i < rfid.uid.size; i++) {
@@ -188,6 +194,7 @@ String getCardID() {
   ID.toUpperCase();
   return ID;
 }
+                       
 // Scanning animation 
 void showScanningAnimation() {
   lcd.setCursor(2, 0);
