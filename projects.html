@@ -131,7 +131,7 @@ function analyzeResume(resumeText) {
 
         <section class="video-section">
           <h4>Demo Video</h4>
-          <iframe width="420" height="236" src="https://youtu.be/ODEoK52VvYA" title="RFID Scanner Demo Video" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="420" height="236" src="https://www.youtube.com/watch?v=ODEoK52VvYA" title="RFID Scanner Demo Video" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
           <!-- Or for MP4: 
           <video width="420" controls>
             <source src="demo-rfid.mp4" type="video/mp4">
@@ -145,10 +145,82 @@ function analyzeResume(resumeText) {
           <div class="code-block" id="code-rfid">
             <button class="copy-btn" onclick="copyCode('code-rfid', this)">Copy</button>
 <code>
-// Code placeholder for RFID Scanner project
-void checkCard(String id) {
-  if(authorized(id)) lcd.print("Access Granted");
-  else lcd.print("Access Denied");
+#include <LiquidCrystal_I2C.h>
+#include <SPI.h>
+#include <MFRC522.h>
+#define SS_PIN 10
+#define RST_PIN 9
+// ====== User Info ======
+String USER1_UID = "F1 AB 1E AA";   
+String USER1_NAME = "David";        
+String USER2_UID = "52 1A 2C 1F";   
+String USER2_NAME = "John";       
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+MFRC522 rfid(SS_PIN, RST_PIN);
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  rfid.PCD_Init();
+  lcd.init();
+  lcd.backlight();
+  lcd.clear();
+}
+void loop() {
+  lcd.setCursor(4, 0);
+  lcd.print("Welcome!");
+  lcd.setCursor(0, 1);
+  lcd.print("Scan ID to Enter");
+  if (!rfid.PICC_IsNewCardPresent()) return;
+  if (!rfid.PICC_ReadCardSerial()) return;
+  lcd.clear();
+  showScanningAnimation(); 
+  String scannedID = getCardID();
+  Serial.print("Scanned UID: ");
+  Serial.println(scannedID);
+  lcd.clear();
+  if (scannedID == USER1_UID) {
+    lcd.setCursor(0,0);
+    lcd.print("Door Open");
+    lcd.setCursor(0,1);
+    lcd.print("Welcome " + USER1_NAME);
+    delay(2500);
+  } 
+  else if (scannedID == USER2_UID) {
+    lcd.setCursor(0,0);
+    lcd.print("Door Open");
+    lcd.setCursor(0,1);
+    lcd.print("Welcome " + USER2_NAME);
+    delay(2500);
+  } 
+  else {
+    lcd.setCursor(0,0);
+    lcd.print("Access Denied!");
+    delay(1500);
+  }
+  lcd.clear();
+}
+// Extract Card UID and convert to readable hex string
+String getCardID() {
+  String ID = "";
+  for (byte i = 0; i < rfid.uid.size; i++) {
+    if (rfid.uid.uidByte[i] < 0x10) ID += "0";
+    ID += String(rfid.uid.uidByte[i], HEX);
+    if (i < rfid.uid.size - 1) ID += " ";
+  }
+  ID.toUpperCase();
+  return ID;
+}
+// Scanning animation 
+void showScanningAnimation() {
+  lcd.setCursor(2, 0);
+  lcd.print("Scanning");
+
+  lcd.setCursor(2, 1);
+  for (int i = 0; i < 8; i++) {
+    lcd.print(".");
+    delay(250);
+  }
 }
 </code>
           </div>
