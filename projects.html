@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — David Thomas</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* --- Demo Video and Code Styles --- */
+    .video-section {
+      margin: 1.5em 0;
+      background: rgba(255,255,255,0.03);
+      padding: 16px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .code-section {
+      margin: 1.5em 0;
+      background: rgba(255,255,255,0.03);
+      padding: 16px;
+      border-radius: 10px;
+    }
+    .code-block {
+      position: relative;
+      background: #141c2b;
+      color: #d8e6ff;
+      padding: 14px;
+      border-radius: 6px;
+      font-family: 'Fira Mono', Monaco, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 4px 11px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 15px;
+      transition: background 0.16s;
+    }
+    .copy-btn:active { background: #004d99; }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -31,7 +75,7 @@
       <img class="project-image" src="logo.jpg" alt="Amparo — screenshot">
       <div>
         <h3>Amparo — AI Job Search Platform</h3>
-        <p class="muted">A job-hunting web platform that analyzes resumes using an AI assistant to provide personalized improvement suggestions and job recommendations. This website also allows users to ...</p>
+        <p class="muted">A job-hunting web platform that analyzes resumes using an AI assistant to provide personalized improvement suggestions and job recommendations. This website also allows users to search positions and get resume feedback in real-time.</p>
         <div class="learn-box">
           <strong>What I learned:</strong>
           <ul>
@@ -41,6 +85,31 @@
             <li>Strengthened skills in designing user-friendly interfaces and responsive layouts.</li>
           </ul>
         </div>
+
+        <section class="video-section">
+          <h4>Demo Video</h4>
+          <!-- Example: YouTube embed, replace VIDEO_ID with your own -->
+          <iframe width="420" height="236" src="https://www.youtube.com/embed/PLACEHOLDER" title="Amparo Demo Video" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <!-- Or for MP4: 
+          <video width="420" controls>
+            <source src="demo-amparo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          -->
+        </section>
+
+        <section class="code-section">
+          <h4>Project Code</h4>
+          <div class="code-block" id="code-amparo">
+            <button class="copy-btn" onclick="copyCode('code-amparo', this)">Copy</button>
+<code>
+// Code placeholder for Amparo project
+function analyzeResume(resumeText) {
+  // Connects to Gemini API and returns feedback.
+}
+</code>
+          </div>
+        </section>
       </div>
     </article>
 
@@ -48,7 +117,7 @@
       <img class="project-image" src="tbd.jpg" alt="RFID Scanner — photo">
       <div>
         <h3>RFID Scanner — Entry Access Device</h3>
-        <p class="muted">A simple entry device that reads RFID keycards. Users tap a card on the scanner; if the card's signal matches the stored access list the connected LCD displays <em>Access Granted</em> or <em>Access Denied</em>.</p>
+        <p class="muted">A simple entry device that reads RFID keycards. Users tap a card on the scanner; if the card's signal matches the stored access list, the connected LCD displays <em>Access Granted</em> or <em>Access Denied</em>.</p>
         <div class="learn-box">
           <strong>What I learned:</strong>
           <ul>
@@ -59,6 +128,31 @@
             <li>Considered basic security and usability concerns for a physical entry device.</li>
           </ul>
         </div>
+
+        <section class="video-section">
+          <h4>Demo Video</h4>
+          <iframe width="420" height="236" src="https://www.youtube.com/embed/PLACEHOLDER" title="RFID Scanner Demo Video" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <!-- Or for MP4: 
+          <video width="420" controls>
+            <source src="demo-rfid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          -->
+        </section>
+
+        <section class="code-section">
+          <h4>Project Code</h4>
+          <div class="code-block" id="code-rfid">
+            <button class="copy-btn" onclick="copyCode('code-rfid', this)">Copy</button>
+<code>
+// Code placeholder for RFID Scanner project
+void checkCard(String id) {
+  if(authorized(id)) lcd.print("Access Granted");
+  else lcd.print("Access Denied");
+}
+</code>
+          </div>
+        </section>
       </div>
     </article>
   </main>
@@ -76,5 +170,16 @@
   </footer>
 
   <script src="assets/scripts.js" defer></script>
+  <script>
+    function copyCode(codeId, button) {
+      const codeBlock = document.querySelector(`#${codeId} code`);
+      if (!codeBlock) return;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        button.textContent = "Copied!";
+        setTimeout(() => { button.textContent = "Copy"; }, 1500);
+      });
+    }
+  </script>
 </body>
 </html>
